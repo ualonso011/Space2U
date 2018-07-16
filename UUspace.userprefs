@@ -1,0 +1,29 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\asteroidColision.cs">
+    <Files>
+      <File FileName="Assets\Scripts\GameControl\GameController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\spaceShip.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\asteroidColision.cs" Line="62" Column="26" />
+      <File FileName="Assets\Scripts\Destroyers\Destroy_By_Boundary.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Destroyers\DestroyByContact.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Destroyers\DestroyByTime.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameControl\GameOver.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameControl\PlanetRotator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GameControl\RandomRotator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Shot_Mover.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\WeaponController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\contactAstronaut.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemyMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemyMovementFollowing.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemyShipCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemySpaceShip.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\enemyWeaponCollision.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Mover.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
