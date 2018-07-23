@@ -9,6 +9,7 @@ public class asteroidColision : MonoBehaviour
 	private GameController gameController;
 	void Start ()
 	{
+		
 		neverDone = true;
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 		if (gameControllerObject != null)
@@ -23,7 +24,7 @@ public class asteroidColision : MonoBehaviour
 	void OnTriggerEnter (Collider other)
 	{
 		//When the asteroid hits the player
-		if (other.tag == "Player") {
+		if (other.CompareTag("Player")) {
 			if (playerExplosion != null) Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
 			Destroy (other.gameObject);
 			Destroy (gameObject);
@@ -31,7 +32,7 @@ public class asteroidColision : MonoBehaviour
 		}
 		//When the asteroid is hitten by the shot
 		//Will change size L->M->S->Destroy
-		if (other.tag == "Weapon") {
+		if (other.CompareTag("Weapon")) {
 			Destroy (other.gameObject);
 			if (size == 1) {
 				if (explosion != null)
@@ -54,7 +55,7 @@ public class asteroidColision : MonoBehaviour
 				}
 			}
 		}
-		if (other.tag == "EnemyWeapon") {
+		if  (other.CompareTag("EnemyWeapon")){
 			Destroy (other.gameObject);
 			if (size == 1) {
 				if (explosion != null)
@@ -71,7 +72,7 @@ public class asteroidColision : MonoBehaviour
 
 			}
 		}
-		if (other.tag == "Enemy") {
+		if   (other.CompareTag("Enemy")){
 			other.gameObject.GetComponent<enemySpaceShip>().hitByAsteroid ();
 			Destroy (gameObject);
 		}

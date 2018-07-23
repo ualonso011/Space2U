@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheType: 1
-  lastUpdatedAtString: 2018-07-16T11:31:01.575+02:00
-  initializedAtString: 2018-07-16T11:28:44.430+02:00
+  lastUpdatedAtString: 2018-07-20T12:26:53.169+02:00
+  initializedAtString: 2018-07-20T12:26:53.169+02:00
   currentGitRemote:
     name: origin
-    url: https://github.com/UrtziOtamendi/UUspace.git
+    url: https://github.com/ualonso011/Space2U.git
     login: 
     user: 
     host: 
@@ -29,9 +29,9 @@ MonoBehaviour:
     name: master
     remote:
       name: origin
-      url: https://github.com/UrtziOtamendi/UUspace.git
+      url: https://github.com/ualonso011/Space2U.git
     trackingBranch: master
   currentConfigRemote:
     name: origin
-    url: https://github.com/UrtziOtamendi/UUspace.git
-  currentHead: 5586e36
+    url: https://github.com/ualonso011/Space2U.git
+  currentHead: 1c5b4773

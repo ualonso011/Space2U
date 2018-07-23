@@ -12,34 +12,45 @@ public class GameController : MonoBehaviour
 	public int followingEnemyFrecuency, asteroidsCount, score = 0;
 	public GameObject astronaut, player, gameOverPanel;
 	public Text scoreText;
+	public GameController gameController;
 
 	void Start ()
 	{
+		gameController = this;
 		StartCoroutine (SpawnAsteroidWaves ());
 		StartCoroutine (SpawnAstronaut ());
 		StartCoroutine (SpawnEnemyShip ());
 		StartCoroutine (SpawnPlanets());
 	}
 
+	GameController getGameController(){
+		return gameController;
+	}
 	void Awake(){
 		gameOverPanel.SetActive (false);
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 
-	IEnumerator SpawnAsteroidWaves ()
+	public IEnumerator SpawnAsteroidWaves ()
 	{
 		yield return new WaitForSeconds (startWait);
+		WaitForSeconds asteroidswaveWait1 = new WaitForSeconds (asteroidswaveWait);
+		WaitForSeconds asteroidsSpawnWait1 = new WaitForSeconds (asteroidsSpawnWait);
+		GameObject asteroid;
+		Vector3 spawnPosition;
+		Quaternion spawnRotation;
+
 		while (true)
 		{
 			for (int i = 0; i < asteroidsCount; i++)
 			{
-				GameObject asteroid = asteroids [Random.Range (0, asteroids.Length)];
-				Vector3 spawnPosition = new Vector3 ( spawnValues.x, Random.Range(-spawnValues.y , spawnValues.y), spawnValues.z);
-				Quaternion spawnRotation = Quaternion.identity;
+				 asteroid = asteroids [Random.Range (0, asteroids.Length)];
+				 spawnPosition = new Vector3 ( spawnValues.x, Random.Range(-spawnValues.y , spawnValues.y), spawnValues.z);
+				 spawnRotation = Quaternion.identity;
 				Instantiate (asteroid, spawnPosition, spawnRotation);
-				yield return new WaitForSeconds (asteroidsSpawnWait);
+				yield return asteroidsSpawnWait1;
 			}
-			yield return new WaitForSeconds (asteroidswaveWait);
+			yield return asteroidswaveWait1;
 
 		}
 	}
@@ -47,13 +58,17 @@ public class GameController : MonoBehaviour
 	IEnumerator SpawnAstronaut ()
 	{
 		yield return new WaitForSeconds (startWait);
+		WaitForSeconds astronautSpawnWait1 = new WaitForSeconds (astronautSpawnWait);
+		float val;
+		Vector3 spawnPosition;
+		Quaternion spawnRotation;
 		while (true)
 		{
 
-			float val = Random.Range (1, 2);
-			yield return new WaitForSeconds (astronautSpawnWait * val);
-			Vector3 spawnPosition = new Vector3 ( spawnValues.x, Random.Range(-spawnValues.y , spawnValues.y), spawnValues.z);
-			Quaternion spawnRotation = Quaternion.identity;
+			 val = Random.Range (1, 2);
+			yield return new WaitForSeconds  (astronautSpawnWait * val);
+			 spawnPosition = new Vector3 ( spawnValues.x, Random.Range(-spawnValues.y , spawnValues.y), spawnValues.z);
+			 spawnRotation = Quaternion.identity;
 			Instantiate (astronaut, spawnPosition, spawnRotation);
 			}
 	}
@@ -62,18 +77,22 @@ public class GameController : MonoBehaviour
 	{
 		yield return new WaitForSeconds (startWait);
 		int count = 0, shipNumber = 0;
+		float val;
+		Vector3 spawnPosition;
+		Quaternion spawnRotation;
+		int number;
 		while (true)
 		{
 
-			float val = Random.Range (1, 2);
+			 val = Random.Range (1, 2);
 			yield return new WaitForSeconds (enemyShipSpawnWait * val);
-			Vector3 spawnPosition = new Vector3 ( spawnValues.x, Random.Range(-spawnValues.y , spawnValues.y), spawnValues.z);
-			Quaternion spawnRotation = Quaternion.Euler(0,180f,0);
+			 spawnPosition = new Vector3 ( spawnValues.x, Random.Range(-spawnValues.y , spawnValues.y), spawnValues.z);
+			 spawnRotation = Quaternion.Euler(0,180f,0);
 			if (count < followingEnemyFrecuency) {
 				count++;
 				Instantiate (enemyShips[shipNumber], spawnPosition, spawnRotation);
 			} else {
-				int number = Random.Range (1, 3);
+				 number = Random.Range (1, 3);
 				if (number == 1) {
 					 spawnPosition = new Vector3 ( spawnValues.x, player.transform.localPosition.y, spawnValues.z);
 					Instantiate (enemyShips [shipNumber + 1], spawnPosition, spawnRotation);
@@ -92,17 +111,20 @@ public class GameController : MonoBehaviour
 	IEnumerator SpawnPlanets ()
 	{
 		yield return new WaitForSeconds (startWait);
-
-
+		GameObject planet; 
+		float val ;
+		WaitForSeconds waitTime;
+		Vector3 spawnPosition;
+		Quaternion spawnRotation;
 		while (true)
 		{
 			for (int i =0; i < planets.Length; i++) {
-				GameObject planet = planets [i];
-				float val = Random.Range (1, 2);
-				float waitTime = System.Convert.ToSingle (planetsSpawnWait + (planetsSpawnWait * 0.1 * val));
-				if (FirstPlanet == false) yield return new WaitForSeconds (waitTime);
-				Vector3 spawnPosition = new Vector3 (Random.Range (planetSpawnValues.x, (planetSpawnValues.x/2)), Random.Range (-planetSpawnValues.y, planetSpawnValues.y), planetSpawnValues.z);
-				Quaternion spawnRotation = Quaternion.identity;
+				 planet = planets [i];
+				 val = Random.Range (1, 2);
+				waitTime = new WaitForSeconds (System.Convert.ToSingle (planetsSpawnWait + (planetsSpawnWait * 0.1 * val)));
+				if (FirstPlanet == false) yield return waitTime;
+				 spawnPosition = new Vector3 (Random.Range (planetSpawnValues.x, (planetSpawnValues.x/2)), Random.Range (-planetSpawnValues.y, planetSpawnValues.y), planetSpawnValues.z);
+				 spawnRotation = Quaternion.identity;
 				Instantiate (planet, spawnPosition, spawnRotation);
 				FirstPlanet = false;
 

@@ -22,7 +22,7 @@ public class contactAstronaut : MonoBehaviour
 	//Explodes only when the astronaut is hitten by a bullet
 	void OnTriggerEnter (Collider other)
 	{
-		if  (other.tag == "Player" )
+		if  (other.CompareTag("Player"))
 		{
 			if  (explosion!=null) Instantiate(explosion, transform.position, Quaternion.identity);
 			Destroy (gameObject);
@@ -30,10 +30,10 @@ public class contactAstronaut : MonoBehaviour
 			gameController.scoreText.text = "SCORE = " + gameController.score;
 		}
 
-		if  (other.tag == "Weapon" || other.tag == "EnemyWeapon" || other.tag == "Enemy" )
+		if  (other.CompareTag("Weapon") || other.CompareTag("EnemyWeapon") || other.CompareTag("Enemy") )
 		{
 			if  (explosion!=null) Instantiate(explosion, transform.position,Quaternion.identity);
-			if  (other.tag == "Weapon" || other.tag == "EnemyWeapon") Destroy (other.gameObject);
+			if  (other.CompareTag("Weapon") || other.CompareTag("EnemyWeapon")) Destroy (other.gameObject);
 			Destroy (gameObject);
 			if (gameController.score < 10) {
 				gameController.score = 0;

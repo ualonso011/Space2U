@@ -12,6 +12,7 @@ public class enemySpaceShip : MonoBehaviour {
 	void Start ()
 	{
 		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
+
 		if (gameControllerObject != null)
 		{
 			gameController = gameControllerObject.GetComponent <GameController>();

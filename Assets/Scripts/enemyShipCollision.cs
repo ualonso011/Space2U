@@ -8,6 +8,7 @@ public class enemyShipCollision : MonoBehaviour
 		private GameController gameController;
 		void Start ()
 		{
+			
 			GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
 			if (gameControllerObject != null)
 			{
@@ -21,26 +22,26 @@ public class enemyShipCollision : MonoBehaviour
 		void OnTriggerEnter (Collider other)
 		{
 			//When the Enemy Ship hits the player
-			if (other.tag == "Player") {
+		if (other.CompareTag("Player")) {
 				if (playerExplosion != null)
 					Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
 				Destroy (other.gameObject);
 				Destroy (gameObject);
 				gameController.GameOver ();
 			}
-			if (other.tag == "Weapon") {
+		if (other.CompareTag("Weapon")) {
 				Destroy (other.gameObject);
 			gameObject.GetComponent<enemySpaceShip>().hitByBullet ();
 			}
-			if (other.tag == "Enemy") {
+		if (other.CompareTag("Enemy")) {
 			other.gameObject.GetComponent<enemySpaceShip>().hitByBullet ();
 			gameObject.GetComponent<enemySpaceShip>().hitByBullet ();
 			}
-			if (other.tag == "EnemyWeapon") {
+		if (other.CompareTag("EnemyWeapon")) {
 				Destroy (other.gameObject);
 			gameObject.GetComponent<enemySpaceShip>().hitByEnemyBullet ();
 			}
-			if (other.tag == "Boundary" || other.tag=="Untagged")
+		if (other.CompareTag("Boundary") || other.CompareTag("Untagged"))
 			{
 				return;
 			}

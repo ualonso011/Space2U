@@ -13,6 +13,7 @@ public class spaceShip : MonoBehaviour {
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float fireRate;
+	private Touch[] myTouches;
 
 	private void Awake(){
 		rb = GetComponent<Rigidbody> ();
@@ -53,10 +54,11 @@ public class spaceShip : MonoBehaviour {
 
 	//=========================================Mobileako=================================================//
 
+
 	  	private void Update () {
 		ship.isTrigger = true;
 		//Touch myTouch = Input.GetTouch (0);
-		Touch[] myTouches = Input.touches;
+		myTouches = Input.touches;
 		for (int i = 0; i < Input.touchCount; i++) {
 			if (Input.GetMouseButtonDown (i)) {
 				if (myTouches[i].position.x < Screen.width / 2) {
